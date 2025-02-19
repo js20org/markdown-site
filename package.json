@@ -7,7 +7,7 @@
         "dist"
     ],
     "bin": {
-        "markdown-site-dev-tool": "./bin/dev-tool.js"
+        "js20-markdown-site-dev-server": "./bin/dev-server.js"
     },
     "scripts": {
         "deploy": "npm run build && npm publish",
