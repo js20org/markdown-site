@@ -9,6 +9,10 @@
     "bin": {
         "js20-markdown-site-dev-server": "./bin/dev-server.js"
     },
+    "sideEffects": false,
+    "main": "./dist/index.js",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
     "scripts": {
         "deploy": "npm run build && npm publish",
         "prebuild": "rimraf dist",
