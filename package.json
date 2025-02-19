@@ -12,7 +12,7 @@
     "scripts": {
         "deploy": "npm run build && npm publish",
         "prebuild": "rimraf dist",
-        "build": "node build.config.js"
+        "build": "tsc -p tsconfig.build.json"
     },
     "peerDependencies": {
         "@js20/schema": "^1.0.1",
@@ -29,7 +29,6 @@
         "@types/node": "^22.10.5",
         "better-opn": "^3.0.2",
         "chokidar": "^4.0.3",
-        "esbuild": "^0.24.2",
         "express": "^4.21.2",
         "rimraf": "^6.0.1",
         "semantic-release": "^24.2.0",
