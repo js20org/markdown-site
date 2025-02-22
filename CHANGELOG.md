@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/js20org/markdown-site/compare/v1.2.0...v1.2.1) (2025-02-22)
+
+
+### Bug Fixes
+
+* new schema version ([4eb666d](https://github.com/js20org/markdown-site/commit/4eb666d70cec6693e2c8b24ad472182e83fb17b8))
+
 # [1.2.0](https://github.com/js20org/markdown-site/compare/v1.1.2...v1.2.0) (2025-02-22)
 
 
