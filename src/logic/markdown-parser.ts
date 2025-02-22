@@ -1,4 +1,4 @@
-import { MarkdownNode, MarkdownNodeType, MarkdownTextNode, MarkdownTree, MarkdownAnchorNode, MarkdownTagNode, Website, MarkdownImageNode } from '../types';
+import { MarkdownNode, MarkdownNodeType, MarkdownTextNode, MarkdownTree, MarkdownAnchorNode, MarkdownTagNode, Website, MarkdownImageNode, MarkdownCodeDividerNode } from '../types';
 
 export function getParsedMarkdown(website: Website, text: string): MarkdownTree {
     const lines = text.split('\n');
@@ -6,16 +6,52 @@ export function getParsedMarkdown(website: Website, text: string): MarkdownTree 
         nodes: [],
     };
 
+    let isBlocking = false;
+
     for (const line of lines) {
+        const { isEnd, startNode } = getCodeDividerInfo(line, isBlocking);
+
+        if (startNode) {
+            tree.nodes.push(startNode);
+            isBlocking = true;
+            continue;
+        }
+
+        if (isEnd) {
+            tree.nodes.push({
+                type: MarkdownNodeType.codeDivider,
+                extraContent: '',
+            });
+
+            isBlocking = false;
+            continue;
+        }
+
+        if (isBlocking) {
+            tree.nodes.push({
+                type: MarkdownNodeType.codeLine,
+                children: [getTextNode(line)],
+            });
+
+            continue;
+        }
+        
         const { type, content } = getLineType(line);
 
-        const isTableRow = type === MarkdownNodeType.tableRow;
-        const children = isTableRow ? getTableCells(website, content) : getParsedContent(website, content);
+        if (content) {
+            const isTableRow = type === MarkdownNodeType.tableRow;
+            const children = isTableRow ? getTableCells(website, content) : getParsedContent(website, content);
 
-        tree.nodes.push({
-            type,
-            children,
-        });
+            tree.nodes.push({
+                type,
+                children,
+            });
+        } else {
+            tree.nodes.push({
+                type,
+                children: [],
+            });
+        }
     }
 
     return tree;
@@ -102,6 +138,32 @@ function getLineType(line: string): {
         return {
             type: MarkdownNodeType.paragraph,
             content: line
+        };
+    }
+}
+
+function getCodeDividerInfo(line: string, isBlocking: boolean) {
+    const isCodeDivider = line.startsWith('```');
+    const isNextBlockingDivider = isCodeDivider;
+    const isEnd = isBlocking && isNextBlockingDivider;
+
+    if (isEnd) {
+        return {
+            isEnd: true,
+        };
+    } else if (isCodeDivider) {
+        const startNode: MarkdownCodeDividerNode = {
+            type: MarkdownNodeType.codeDivider,
+            extraContent: line.substring(3),
+        };
+
+        return {
+            isEnd: false,
+            startNode,
+        };
+    } else {
+        return {
+            isEnd: false,
         };
     }
 }

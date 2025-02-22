@@ -11,13 +11,18 @@ $$ meta:description a description
 > more
 > text
 
-```
-and some code
-here
-and 
-more code
-[end]
+> another _quote_
+> :)
+
+```md
+code with language and 1 < 2 some + *code* _stuff_ () {} [] > < <= >= == != and some more
+
+after newlines
 ```
 
-> another quote
-> :)
+hello divider paragraph
+
+```
+and some code
+[end]
+```

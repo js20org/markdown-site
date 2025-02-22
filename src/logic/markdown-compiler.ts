@@ -1,5 +1,5 @@
 import { getParsedSchemaValue, getValidatedSchema, validateBySchema } from '@js20/schema';
-import { BuiltPage, Command, CommandProps, MarkdownNode, MarkdownNodeType, MarkdownTableNode, MarkdownTagNode, MarkdownTextNode, MarkdownTree, Page, Position, Website } from '../types';
+import { BuiltPage, Command, CommandProps, MarkdownCodeDividerNode, MarkdownCodeNode, MarkdownNode, MarkdownNodeType, MarkdownTableNode, MarkdownTagNode, MarkdownTextNode, MarkdownTree, Page, Position, Website } from '../types';
 import { getTextNode } from './markdown-parser';
 
 export const getCompiledMarkdown = (commandProps: CommandProps, page: BuiltPage): MarkdownTree => {
@@ -7,7 +7,8 @@ export const getCompiledMarkdown = (commandProps: CommandProps, page: BuiltPage)
 
     const withoutAbundantSpaces = getWithoutAbundantSpaces(tree.nodes);
     const withSpecialCharacters = getWithSpecialCharacters(withoutAbundantSpaces);
-    const withProcessedCommands = getWithProcessedCommands(commandProps, withSpecialCharacters);
+    const withCode = getWithCode(withSpecialCharacters);
+    const withProcessedCommands = getWithProcessedCommands(commandProps, withCode);
     const withLists = getWithLists(withProcessedCommands);
     const withTables = getWithTables(withLists);
     const withQuotes = getWithQuotes(withTables);
@@ -386,6 +387,51 @@ function getWithQuotes(nodes: MarkdownNode[]): MarkdownNode[] {
         }
         
         currentQuoteNode.children.push(node);
+    }
+
+    applyIfNeeded();
+    return result;
+}
+
+function getWithCode(nodes: MarkdownNode[]): MarkdownNode[] {
+    const result: MarkdownNode[] = [];
+
+    function applyIfNeeded() {
+        if (codeNode) {
+            result.push(codeNode);
+            codeNode = null;
+        }
+    }
+
+    let codeNode: MarkdownCodeNode | null = null;
+
+    for (let i = 0; i < nodes.length; i++) {
+        const node = nodes[i];
+        const { type } = node;
+        
+        const isCodeNode = [MarkdownNodeType.codeDivider, MarkdownNodeType.codeLine].includes(type);
+
+        if (!isCodeNode) {
+            applyIfNeeded();
+            result.push(node);
+            continue;
+        }
+
+        if (!codeNode) {
+            const language = (node as MarkdownCodeDividerNode).extraContent;
+
+            codeNode = {
+                type: MarkdownNodeType.code,
+                lines: [],
+                language,
+            };
+        }
+        
+        const isLine = type === MarkdownNodeType.codeLine;
+
+        if (isLine) {
+            codeNode.lines.push(node);
+        }
     }
 
     applyIfNeeded();

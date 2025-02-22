@@ -57,6 +57,9 @@ export enum MarkdownNodeType {
     tableHeaderDivider = 'tableHeaderDivider',
     tableCell = 'tableCell',
     tableCellHeader = 'tableCellHeader',
+    code = 'code',
+    codeDivider = 'codeDivider',
+    codeLine = 'codeLine',
 }
 
 export interface MarkdownAnchorNode {
@@ -77,6 +80,12 @@ export interface MarkdownTagNode {
     children: MarkdownNode[];
 }
 
+export interface MarkdownCodeNode {
+    type: MarkdownNodeType.code;
+    lines: MarkdownNode[];
+    language: string;
+}
+
 export interface MarkdownTableNode {
     type: MarkdownNodeType.table;
     headerRows: MarkdownNode[];
@@ -94,7 +103,12 @@ export interface MarkdownMetadataNode {
     value: string;
 }
 
-export type MarkdownNode = MarkdownTagNode | MarkdownTextNode | MarkdownMetadataNode | MarkdownAnchorNode | MarkdownImageNode | MarkdownTableNode;
+export interface MarkdownCodeDividerNode {
+    type: MarkdownNodeType.codeDivider;
+    extraContent: string;
+}
+
+export type MarkdownNode = MarkdownTagNode | MarkdownTextNode | MarkdownMetadataNode | MarkdownAnchorNode | MarkdownImageNode | MarkdownTableNode | MarkdownCodeDividerNode | MarkdownCodeNode;
 
 export interface MarkdownTree {
     nodes: MarkdownNode[];

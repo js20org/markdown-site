@@ -1,4 +1,4 @@
-import { MarkdownAnchorNode, MarkdownImageNode, MarkdownNode, MarkdownNodeType, MarkdownTableNode, MarkdownTextNode, MarkdownTree } from '../types';
+import { MarkdownAnchorNode, MarkdownCodeNode, MarkdownImageNode, MarkdownNode, MarkdownNodeType, MarkdownTableNode, MarkdownTextNode, MarkdownTree } from '../types';
 
 export function getHtmlFromMarkdownTree(tree: MarkdownTree): string {
     return getRenderedNodeList(tree.nodes);
@@ -57,9 +57,20 @@ function getRenderedNode(node: MarkdownNode): string {
             return `<blockquote>${getQuote(node.children)}</blockquote>`;
         case MarkdownNodeType.quoteLine:
             return getRenderedNodeList(node.children);
+        case MarkdownNodeType.code:
+            return getCode(node as MarkdownCodeNode);
+        case MarkdownNodeType.codeLine:
+            return getRenderedNodeList(node.children);
         default:
             throw new Error(`Unknown node type: ${node.type}`);
     }
+}
+
+function getCode({ lines, language }: MarkdownCodeNode): string {
+    const content = lines.map(l => getRenderedNode(l)).join('\n');
+    const classExtra = language ? ` class="language-${language}"` : '';
+
+    return `<pre${classExtra}><code>${content}</code></pre>`;
 }
 
 function getQuote(children: MarkdownNode[]): string {
