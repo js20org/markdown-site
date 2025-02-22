@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/js20org/markdown-site/compare/v1.1.0...v1.1.1) (2025-02-22)
+
+
+### Bug Fixes
+
+* sitemap double https ([cd7fb63](https://github.com/js20org/markdown-site/commit/cd7fb63738044c676e9d6c0159dfc91c9f8046be))
+
 # [1.1.0](https://github.com/js20org/markdown-site/compare/v1.0.1...v1.1.0) (2025-02-22)
 
 
