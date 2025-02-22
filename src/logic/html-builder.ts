@@ -53,9 +53,30 @@ function getRenderedNode(node: MarkdownNode): string {
             return `<td>${getRenderedNodeList(node.children)}</td>`;
         case MarkdownNodeType.tableCellHeader:
             return `<th>${getRenderedNodeList(node.children)}</th>`;
+        case MarkdownNodeType.quote:
+            return `<blockquote>${getQuote(node.children)}</blockquote>`;
+        case MarkdownNodeType.quoteLine:
+            return getRenderedNodeList(node.children);
         default:
             throw new Error(`Unknown node type: ${node.type}`);
     }
+}
+
+function getQuote(children: MarkdownNode[]): string {
+    const result = [];
+
+    for (let i = 0; i < children.length; i++) {
+        const child = children[i];
+        const isLast = i === children.length - 1;
+
+        result.push(getRenderedNode(child));
+
+        if (!isLast) {
+            result.push('<br>');
+        }
+    }
+
+    return result.join('');
 }
 
 function getImage({ src, alt }: MarkdownImageNode): string {

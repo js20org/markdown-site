@@ -46,6 +46,8 @@ export enum MarkdownNodeType {
     text = 'text',
     anchor = 'anchor',
     image = 'image',
+    quoteLine = 'quoteLine',
+    quote = 'quote',
     unorderedListItem = 'unorderedListItem',
     orderedListItem = 'orderedListItem',
     orderedList = 'orderedList',

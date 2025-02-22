@@ -10,7 +10,8 @@ export const getCompiledMarkdown = (commandProps: CommandProps, page: BuiltPage)
     const withProcessedCommands = getWithProcessedCommands(commandProps, withSpecialCharacters);
     const withLists = getWithLists(withProcessedCommands);
     const withTables = getWithTables(withLists);
-    const withPlugins = getWithPlugins(commandProps.website, page, withTables);
+    const withQuotes = getWithQuotes(withTables);
+    const withPlugins = getWithPlugins(commandProps.website, page, withQuotes);
 
     return {
         ...tree,
@@ -350,5 +351,43 @@ function getWithPlugins(website: Website, page: BuiltPage, nodes: MarkdownNode[]
         }
     }
 
+    return result;
+}
+
+function getWithQuotes(nodes: MarkdownNode[]): MarkdownNode[] {
+    const result: MarkdownNode[] = [];
+
+    function applyIfNeeded() {
+        if (currentQuoteNode) {
+            result.push(currentQuoteNode);
+            currentQuoteNode = null;
+        }
+    }
+
+    let currentQuoteNode: MarkdownTagNode | null = null;
+
+    for (let i = 0; i < nodes.length; i++) {
+        const node = nodes[i];
+        const { type } = node;
+        
+        const isQuoteLine = type === MarkdownNodeType.quoteLine;
+
+        if (!isQuoteLine) {
+            applyIfNeeded();
+            result.push(node);
+            continue;
+        }
+
+        if (!currentQuoteNode) {
+            currentQuoteNode = {
+                type: MarkdownNodeType.quote,
+                children: [],
+            };
+        }
+        
+        currentQuoteNode.children.push(node);
+    }
+
+    applyIfNeeded();
     return result;
 }

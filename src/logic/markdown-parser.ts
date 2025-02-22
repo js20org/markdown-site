@@ -93,6 +93,11 @@ function getLineType(line: string): {
             type: MarkdownNodeType.tableRow,
             content: line,
         };
+    } else if (line.startsWith('> ')) {
+        return {
+            type: MarkdownNodeType.quoteLine,
+            content: line.substring(2)
+        };
     } else {
         return {
             type: MarkdownNodeType.paragraph,
