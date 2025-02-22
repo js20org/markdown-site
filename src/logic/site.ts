@@ -39,7 +39,8 @@ const getSlug = (relativeDirectoryPath: string, fileName: string) => {
     if (isIndex) {
         return '/';
     } else {
-        return '/' + [relativeDirectoryPath, fileName].join('/');
+        const joined = relativeDirectoryPath ? [relativeDirectoryPath, fileName].join('/') : fileName;
+        return '/' + joined;
     }
 }
 
