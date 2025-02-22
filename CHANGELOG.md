@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/js20org/markdown-site/compare/v1.1.1...v1.1.2) (2025-02-22)
+
+
+### Bug Fixes
+
+* slug builder ([91583ed](https://github.com/js20org/markdown-site/commit/91583edb6e97f8ea93dbf10bb6456245a6adcc06))
+
 ## [1.1.1](https://github.com/js20org/markdown-site/compare/v1.1.0...v1.1.1) (2025-02-22)
 
 
