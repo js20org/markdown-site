@@ -91,7 +91,7 @@ function getQuote(children: MarkdownNode[]): string {
 }
 
 function getImage({ src, alt }: MarkdownImageNode): string {
-    return `<div class="imageWrapper"><img src="${src}" alt="${alt}" /><label>${alt}</label></div>`;
+    return `<div class="image-wrapper"><img src="${src}" alt="${alt}" /><label>${alt}</label></div>`;
 }
 
 function getAnchor(node: MarkdownAnchorNode): string {
