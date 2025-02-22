@@ -1,7 +1,8 @@
 # Something
 $$ meta:description a description
 
-![image](/public/foobar/image.png)
+![image text here](/public/foobar/image.png)
+![something-else](/public/foobar/image-link2.png)
 
 > A quote
 > with multiple

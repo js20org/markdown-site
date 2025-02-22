@@ -1,4 +1,4 @@
-import { MarkdownAnchorNode, MarkdownNode, MarkdownNodeType, MarkdownTableNode, MarkdownTextNode, MarkdownTree } from '../types';
+import { MarkdownAnchorNode, MarkdownImageNode, MarkdownNode, MarkdownNodeType, MarkdownTableNode, MarkdownTextNode, MarkdownTree } from '../types';
 
 export function getHtmlFromMarkdownTree(tree: MarkdownTree): string {
     return getRenderedNodeList(tree.nodes);
@@ -34,6 +34,8 @@ function getRenderedNode(node: MarkdownNode): string {
             return (node as MarkdownTextNode).content;
         case MarkdownNodeType.metadata:
             return '';
+        case MarkdownNodeType.image:
+            return getImage(node as MarkdownImageNode);
         case MarkdownNodeType.anchor:
             return getAnchor(node as MarkdownAnchorNode);
         case MarkdownNodeType.orderedList:
@@ -54,6 +56,10 @@ function getRenderedNode(node: MarkdownNode): string {
         default:
             throw new Error(`Unknown node type: ${node.type}`);
     }
+}
+
+function getImage({ src, alt }: MarkdownImageNode): string {
+    return `<div class="imageWrapper"><img src="${src}" alt="${alt}" /><label>${alt}</label></div>`;
 }
 
 function getAnchor(node: MarkdownAnchorNode): string {

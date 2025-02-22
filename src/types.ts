@@ -45,6 +45,7 @@ export enum MarkdownNodeType {
     italic = 'italic',
     text = 'text',
     anchor = 'anchor',
+    image = 'image',
     unorderedListItem = 'unorderedListItem',
     orderedListItem = 'orderedListItem',
     orderedList = 'orderedList',
@@ -61,6 +62,12 @@ export interface MarkdownAnchorNode {
     href: string;
     content: string;
     target: string;
+}
+
+export interface MarkdownImageNode {
+    type: MarkdownNodeType.image;
+    src: string;
+    alt: string;
 }
 
 export interface MarkdownTagNode {
@@ -85,7 +92,7 @@ export interface MarkdownMetadataNode {
     value: string;
 }
 
-export type MarkdownNode = MarkdownTagNode | MarkdownTextNode | MarkdownMetadataNode | MarkdownAnchorNode | MarkdownTableNode;
+export type MarkdownNode = MarkdownTagNode | MarkdownTextNode | MarkdownMetadataNode | MarkdownAnchorNode | MarkdownImageNode | MarkdownTableNode;
 
 export interface MarkdownTree {
     nodes: MarkdownNode[];

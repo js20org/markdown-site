@@ -1,4 +1,4 @@
-import { MarkdownNode, MarkdownNodeType, MarkdownTextNode, MarkdownMetadataNode, MarkdownTree, Metadata, MarkdownAnchorNode, MarkdownTagNode, Website } from '../types';
+import { MarkdownNode, MarkdownNodeType, MarkdownTextNode, MarkdownTree, MarkdownAnchorNode, MarkdownTagNode, Website, MarkdownImageNode } from '../types';
 
 export function getParsedMarkdown(website: Website, text: string): MarkdownTree {
     const lines = text.split('\n');
@@ -133,7 +133,8 @@ function getParsedContent(website: Website, content: string): MarkdownNode[] {
         { getRegex: () => /(?<!\\)__(.+?)(?<!\\)__/, type: MarkdownNodeType.underline },
         { getRegex: () => /(?<!\\)(?:\*\*|__)(.+?)(?<!\\)(?:\*\*|__)/g, type: MarkdownNodeType.bold },
         { getRegex: () => /(?<!\\)(?:\*|_)(.+?)(?<!\\)(?:\*|_)/g, type: MarkdownNodeType.italic },
-        { getRegex: () => /\[([^\]]+)\]\(([^)]+)\)/g, type: MarkdownNodeType.anchor }, // Captures text and URL separately
+        { getRegex: () => /!\[([^\]]+)\]\(([^)]+)\)/g, type: MarkdownNodeType.image },
+        { getRegex: () => /\[([^\]]+)\]\(([^)]+)\)/g, type: MarkdownNodeType.anchor },
     ];
 
     let currentNodes: MarkdownNode[] = [getTextNode(content)];
@@ -164,9 +165,12 @@ function getReplacedPattern(website: Website, nodes: MarkdownNode[], pattern: Pa
             const textNode = node as MarkdownTextNode;
             const regex = pattern.getRegex();
             const match = regex.exec(textNode.content);
+            const isImage = pattern.type === MarkdownNodeType.image;
             const isAnchor = pattern.type === MarkdownNodeType.anchor;
 
-            if (isAnchor && match) {
+            if (isImage && match) {
+                result.push(getImageNode(match[2], match[1]));
+            } else if (isAnchor && match) {
                 result.push(getAnchorNode(website, match[2], match[1]));
             } else if (match) {
                 const [_fullMatch, insideTag] = match;
@@ -198,6 +202,14 @@ function getReplacedPattern(website: Website, nodes: MarkdownNode[], pattern: Pa
     }
 
     return result;
+}
+
+function getImageNode(src: string, alt: string): MarkdownImageNode {
+    return {
+        type: MarkdownNodeType.image,
+        src,
+        alt,
+    };
 }
 
 function getAnchorNode(website: Website, href: string, content: string): MarkdownAnchorNode {
