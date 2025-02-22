@@ -1,3 +1,12 @@
+# [1.2.0](https://github.com/js20org/markdown-site/compare/v1.1.2...v1.2.0) (2025-02-22)
+
+
+### Features
+
+* code parsing ([6cdefe8](https://github.com/js20org/markdown-site/commit/6cdefe821fb04dc3f2039546869dc6ac4605e059))
+* image support ([a1968ea](https://github.com/js20org/markdown-site/commit/a1968eabe77fefcb45becaa26a4d7280264e1c42))
+* quotes parser ([cc998a9](https://github.com/js20org/markdown-site/commit/cc998a933bf45d6d936c963749e828475cf9b922))
+
 ## [1.1.2](https://github.com/js20org/markdown-site/compare/v1.1.1...v1.1.2) (2025-02-22)
 
 
