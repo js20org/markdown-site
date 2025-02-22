@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/js20org/markdown-site/compare/v1.0.1...v1.1.0) (2025-02-22)
+
+
+### Features
+
+* Added bash format ([0e78a2f](https://github.com/js20org/markdown-site/commit/0e78a2fe0e2fbab25bf1d6d3e2d2c677f3d9224a))
+
 ## [1.0.1](https://github.com/js20org/markdown-site/compare/v1.0.0...v1.0.1) (2025-02-19)
 
 
