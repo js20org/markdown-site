@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/js20org/markdown-site/compare/v1.2.1...v1.2.2) (2025-02-22)
+
+
+### Bug Fixes
+
+* image wrapper class ([644ab71](https://github.com/js20org/markdown-site/commit/644ab716b9a389c8c8eff2a98db97616c91302f0))
+
 ## [1.2.1](https://github.com/js20org/markdown-site/compare/v1.2.0...v1.2.1) (2025-02-22)
 
 
