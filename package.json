@@ -21,13 +21,13 @@
         "dev": "node dev.config.js && node ./dist-dev/dev.js"
     },
     "peerDependencies": {
-        "@js20/schema": "^1.0.2",
+        "@js20/schema": "^1.0.3",
         "better-opn": "^3.0.2",
         "chokidar": "^4.0.3",
         "express": "^4.21.2"
     },
     "devDependencies": {
-        "@js20/schema": "^1.0.1",
+        "@js20/schema": "^1.0.3",
         "@semantic-release/changelog": "^6.0.3",
         "@semantic-release/git": "^10.0.1",
         "@semantic-release/github": "^11.0.1",
