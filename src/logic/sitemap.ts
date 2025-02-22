@@ -15,7 +15,7 @@ export function renderSitemap(website: Website, pages: BuiltPage[]) {
 }
 
 function getSitemap(website: Website, pages: BuiltPage[]) {
-    const robotsContent = `Sitemap: https://${website.url}/sitemap.txt`;
+    const robotsContent = `Sitemap: ${website.url}/sitemap.txt`;
     const { legacyPaths = [] } = website;
 
     const allSlugs = [
@@ -32,7 +32,7 @@ function getSitemap(website: Website, pages: BuiltPage[]) {
 }
 
 function getPageUrl(website: Website, slug: string) {
-    return `https://${website.url}${slug}`;
+    return `${website.url}${slug}`;
 }
 
 const saveFile = (website: Website, filePath: string, output: string) => {
