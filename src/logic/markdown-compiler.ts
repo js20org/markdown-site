@@ -371,6 +371,12 @@ function getWithPlugins(props: PluginProps, nodes: MarkdownNode[]): MarkdownNode
     }
 
     for (const plugin of plugins) {
+        const isSlugMatch = page.slug.startsWith(plugin.slugStart);
+
+        if (!isSlugMatch) {
+            continue;
+        }
+
         for (const rule of plugin.rules) {
             const documentRule = rule as PluginRuleDocument;
             const isAfterDocument = documentRule.position === Position.afterDocument;
