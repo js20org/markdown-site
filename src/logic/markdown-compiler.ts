@@ -1,5 +1,5 @@
 import { getParsedSchemaValue, getValidatedSchema, validateBySchema } from '@js20/schema';
-import { BuiltPage, Command, CommandProps, MarkdownCodeDividerNode, MarkdownCodeNode, MarkdownNode, MarkdownNodeType, MarkdownTableNode, MarkdownTagNode, MarkdownTextNode, MarkdownTree, Page, Position, Website } from '../types';
+import { BuiltPage, Command, CommandProps, MarkdownCodeDividerNode, MarkdownCodeNode, MarkdownNode, MarkdownNodeType, MarkdownTableNode, MarkdownTagNode, MarkdownTextNode, MarkdownTree, Page, PluginRuleDocument, PluginRuleNode, Position, Website } from '../types';
 import { getTextNode } from './markdown-parser';
 
 export const getCompiledMarkdown = (commandProps: CommandProps, page: BuiltPage): MarkdownTree => {
@@ -322,7 +322,13 @@ function getWithPlugins(website: Website, page: BuiltPage, nodes: MarkdownNode[]
             }
 
             for (const rule of plugin.rules) {
-                const isTypeMatch = rule.type === node.type;
+                const nodeRule = rule as PluginRuleNode;
+
+                if (!nodeRule.type) {
+                    continue;
+                }
+                
+                const isTypeMatch = nodeRule.type === node.type;
 
                 if (!isTypeMatch) {
                     continue;
@@ -330,8 +336,8 @@ function getWithPlugins(website: Website, page: BuiltPage, nodes: MarkdownNode[]
 
                 const content = getTextNode(rule.getContent(page));
                 
-                const isBefore = rule.position === Position.before;
-                const isAfter = rule.position === Position.after;
+                const isBefore = rule.position === Position.beforeEachNode;
+                const isAfter = rule.position === Position.afterEachNode;
 
                 if (isBefore) {
                     before = content;
@@ -349,6 +355,18 @@ function getWithPlugins(website: Website, page: BuiltPage, nodes: MarkdownNode[]
 
         if (after) {
             result.push(after);
+        }
+    }
+
+    for (const plugin of plugins) {
+        for (const rule of plugin.rules) {
+            const documentRule = rule as PluginRuleDocument;
+            const isAfterDocument = documentRule.position === Position.afterDocument;
+
+            if (isAfterDocument) {
+                const content = getTextNode(rule.getContent(page));
+                result.push(content);
+            }
         }
     }
 

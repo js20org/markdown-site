@@ -149,12 +149,20 @@ export interface Plugin {
 }
 
 export enum Position {
-    before = 'before',
-    after = 'after',
+    beforeEachNode = 'beforeEachNode',
+    afterEachNode = 'afterEachNode',
+    afterDocument = 'afterDocument',
 }
 
-export interface PluginRule {
+export interface PluginRuleNode {
     type: MarkdownNodeType;
-    position: Position;
+    position: Position.beforeEachNode | Position.afterEachNode;
     getContent: (page: BuiltPage) => string;
 }
+
+export interface PluginRuleDocument {
+    position: Position.afterDocument;
+    getContent: (page: BuiltPage) => string;
+}
+
+export type PluginRule = PluginRuleNode | PluginRuleDocument;
