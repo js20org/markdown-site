@@ -157,12 +157,18 @@ export enum Position {
 export interface PluginRuleNode {
     type: MarkdownNodeType;
     position: Position.beforeEachNode | Position.afterEachNode;
-    getContent: (page: BuiltPage) => string;
+    getContent: (props: PluginProps) => string;
 }
 
 export interface PluginRuleDocument {
     position: Position.afterDocument;
-    getContent: (page: BuiltPage) => string;
+    getContent: (props: PluginProps) => string;
 }
 
 export type PluginRule = PluginRuleNode | PluginRuleDocument;
+
+export interface PluginProps {
+    website: Website;
+    allPages: BuiltPage[];
+    page: BuiltPage;
+}

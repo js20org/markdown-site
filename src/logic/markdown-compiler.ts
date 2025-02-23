@@ -1,9 +1,20 @@
 import { getParsedSchemaValue, getValidatedSchema, validateBySchema } from '@js20/schema';
-import { BuiltPage, Command, CommandProps, MarkdownCodeDividerNode, MarkdownCodeNode, MarkdownNode, MarkdownNodeType, MarkdownTableNode, MarkdownTagNode, MarkdownTextNode, MarkdownTree, Page, PluginRuleDocument, PluginRuleNode, Position, Website } from '../types';
+import { BuiltPage, Command, CommandProps, MarkdownCodeDividerNode, MarkdownCodeNode, MarkdownNode, MarkdownNodeType, MarkdownTableNode, MarkdownTagNode, MarkdownTextNode, MarkdownTree, Page, PluginProps, PluginRuleDocument, PluginRuleNode, Position, Website } from '../types';
 import { getTextNode } from './markdown-parser';
 
-export const getCompiledMarkdown = (commandProps: CommandProps, page: BuiltPage): MarkdownTree => {
+export const getCompiledMarkdown = (website: Website, pages: BuiltPage[], page: BuiltPage): MarkdownTree => {
     const { tree } = page;
+
+    const commandProps: CommandProps = {
+        website,
+        pages,
+    };
+
+    const pluginProps: PluginProps = {
+        website,
+        page,
+        allPages: pages,
+    };
 
     const withoutAbundantSpaces = getWithoutAbundantSpaces(tree.nodes);
     const withSpecialCharacters = getWithSpecialCharacters(withoutAbundantSpaces);
@@ -12,7 +23,7 @@ export const getCompiledMarkdown = (commandProps: CommandProps, page: BuiltPage)
     const withLists = getWithLists(withProcessedCommands);
     const withTables = getWithTables(withLists);
     const withQuotes = getWithQuotes(withTables);
-    const withPlugins = getWithPlugins(commandProps.website, page, withQuotes);
+    const withPlugins = getWithPlugins(pluginProps, withQuotes);
 
     return {
         ...tree,
@@ -305,9 +316,10 @@ function getEscapeHtml(value: string): string {
         .replace(/`/g, '&#x60;');
 }
 
-function getWithPlugins(website: Website, page: BuiltPage, nodes: MarkdownNode[]): MarkdownNode[] {
+function getWithPlugins(props: PluginProps, nodes: MarkdownNode[]): MarkdownNode[] {
     const result: MarkdownNode[] = [];
 
+    const { website, page } = props;
     const { plugins = [] } = website;
 
     for (const node of nodes) {
@@ -334,7 +346,7 @@ function getWithPlugins(website: Website, page: BuiltPage, nodes: MarkdownNode[]
                     continue;
                 }
 
-                const content = getTextNode(rule.getContent(page));
+                const content = getTextNode(rule.getContent(props));
                 
                 const isBefore = rule.position === Position.beforeEachNode;
                 const isAfter = rule.position === Position.afterEachNode;
@@ -364,7 +376,7 @@ function getWithPlugins(website: Website, page: BuiltPage, nodes: MarkdownNode[]
             const isAfterDocument = documentRule.position === Position.afterDocument;
 
             if (isAfterDocument) {
-                const content = getTextNode(rule.getContent(page));
+                const content = getTextNode(rule.getContent(props));
                 result.push(content);
             }
         }

@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { BuiltPage, CommandProps, Page, Website } from '../types';
+import { BuiltPage, CommandProps, Page, PluginProps, Website } from '../types';
 import { getOutputByTemplate, getTemplates } from './html-templates';
 import { getCompiledMarkdown } from './markdown-compiler';
 import { getHtmlFromMarkdownTree } from './html-builder';
@@ -18,13 +18,8 @@ export const renderHtmlFiles = (
 
     console.log('Rendering HTML files...');
 
-    const commandProps: CommandProps = {
-        website,
-        pages,
-    };
-
     for (const page of pages) {
-        const markdownTree = getCompiledMarkdown(commandProps, page);
+        const markdownTree = getCompiledMarkdown(website, pages, page);
         const htmlContent = getHtmlFromMarkdownTree(markdownTree);
         const output = getOutputByTemplate(
             website,
