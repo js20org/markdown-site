@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/js20org/markdown-site/compare/v1.3.0...v1.4.0) (2025-02-23)
+
+
+### Features
+
+* added plugin props ([5466bc8](https://github.com/js20org/markdown-site/commit/5466bc8f6fd7130004bfbd365c6d3d9fbb151b9d))
+
 # [1.3.0](https://github.com/js20org/markdown-site/compare/v1.2.2...v1.3.0) (2025-02-23)
 
 
