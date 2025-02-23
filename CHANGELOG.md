@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/js20org/markdown-site/compare/v1.4.0...v1.4.1) (2025-02-23)
+
+
+### Bug Fixes
+
+* slug match to document after ([58f9827](https://github.com/js20org/markdown-site/commit/58f98271769f6fed9d3e65c0672955838596f47e))
+
 # [1.4.0](https://github.com/js20org/markdown-site/compare/v1.3.0...v1.4.0) (2025-02-23)
 
 
