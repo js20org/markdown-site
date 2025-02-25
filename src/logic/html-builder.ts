@@ -41,7 +41,7 @@ function getRenderedNode(node: MarkdownNode): string {
         case MarkdownNodeType.orderedList:
             return `<ol>${getRenderedNodeList(node.children)}</ol>`;
         case MarkdownNodeType.unorderedList:
-            return `<ol>${getRenderedNodeList(node.children)}</ol>`;
+            return `<ul>${getRenderedNodeList(node.children)}</ul>`;
         case MarkdownNodeType.orderedListItem:
         case MarkdownNodeType.unorderedListItem:
             return `<li>${getRenderedNodeList(node.children)}</li>`
