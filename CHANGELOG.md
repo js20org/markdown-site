@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/js20org/markdown-site/compare/v1.4.1...v1.4.2) (2025-02-25)
+
+
+### Bug Fixes
+
+* bug with unordered lists becoming numbered ([d12cf27](https://github.com/js20org/markdown-site/commit/d12cf276ca5d51bd0379d0b99aeef835e3fb5ca9))
+
 ## [1.4.1](https://github.com/js20org/markdown-site/compare/v1.4.0...v1.4.1) (2025-02-23)
 
 
