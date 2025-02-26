@@ -121,6 +121,7 @@ export interface Metadata {
     author?: string;
     imageUrl?: string;
     language?: string;
+    shortTitle?: string;
 }
 
 export interface BuiltPage extends Page {

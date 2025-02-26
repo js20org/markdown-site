@@ -11,6 +11,7 @@ const optionalMetadataKeys: (keyof Metadata)[] = [
     'author',
     'imageUrl',
     'language',
+    'shortTitle',
 ];
 
 const metadataKeys = [...requiredMetadataKeys, ...optionalMetadataKeys];
