@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/js20org/markdown-site/compare/v1.4.2...v1.5.0) (2025-02-26)
+
+
+### Features
+
+* added template renderer ([3a83a09](https://github.com/js20org/markdown-site/commit/3a83a0902e71bc082012fd0d74ce654d13534c1b))
+
 ## [1.4.2](https://github.com/js20org/markdown-site/compare/v1.4.1...v1.4.2) (2025-02-25)
 
 
