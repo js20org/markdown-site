@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/js20org/markdown-site/compare/v1.5.0...v1.6.0) (2025-02-26)
+
+
+### Features
+
+* shortTitle in metadata ([ace721b](https://github.com/js20org/markdown-site/commit/ace721bb61575cb2c3e448642844e920e67bd396))
+
 # [1.5.0](https://github.com/js20org/markdown-site/compare/v1.4.2...v1.5.0) (2025-02-26)
 
 
