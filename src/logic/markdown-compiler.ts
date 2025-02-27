@@ -92,7 +92,7 @@ const getWithProcessedCommands = (
 
 const getParsedData = (
     schema: any,
-    argsMap: Record<string, string>
+    argsMap: Record<string, string | null>
 ) => {
     const result: any = {};
 
@@ -124,17 +124,11 @@ const getTransformedCommandNode = (
     }
 
     const { argsKeys, argsSchema, run } = command as Command<any>;
-    const hasSameAmountOfArgs = argsKeys.length === args.length;
-
-    if (!hasSameAmountOfArgs) {
-        throw new Error(`Command "${commandId}" expects ${argsKeys.length} arguments, but got ${args.length}`);
-    }
-
-    const argsMap: Record<string, string> = {};
+    const argsMap: Record<string, string | null> = {};
 
     for (let i = 0; i < argsKeys.length; i++) {
         const key = argsKeys[i] as string;
-        const value = args[i];
+        const value = args[i] || null;
 
         argsMap[key] = value;
     }
