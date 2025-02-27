@@ -128,7 +128,7 @@ const getTransformedCommandNode = (
 
     for (let i = 0; i < argsKeys.length; i++) {
         const key = argsKeys[i] as string;
-        const value = args[i] || null;
+        const value = args[i] ?? null;
 
         argsMap[key] = value;
     }
