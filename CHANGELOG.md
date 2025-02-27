@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/js20org/markdown-site/compare/v1.7.0...v1.7.1) (2025-02-27)
+
+
+### Bug Fixes
+
+* null operator in optional ([97abccd](https://github.com/js20org/markdown-site/commit/97abccd64e1ab780ed2633459c0bb03763d26396))
+
 # [1.7.0](https://github.com/js20org/markdown-site/compare/v1.6.0...v1.7.0) (2025-02-27)
 
 
