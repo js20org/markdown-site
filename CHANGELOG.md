@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/js20org/markdown-site/compare/v1.6.0...v1.7.0) (2025-02-27)
+
+
+### Features
+
+* bump version ([374e782](https://github.com/js20org/markdown-site/commit/374e782f66550343dd3d2cd103e6f3128a991fc7))
+
 # [1.6.0](https://github.com/js20org/markdown-site/compare/v1.5.0...v1.6.0) (2025-02-26)
 
 
