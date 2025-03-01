@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/js20org/markdown-site/compare/v1.7.1...v1.8.0) (2025-03-01)
+
+
+### Features
+
+* trigger release ([84b4875](https://github.com/js20org/markdown-site/commit/84b4875b760b642b125707abe9533252225f7c67))
+
 ## [1.7.1](https://github.com/js20org/markdown-site/compare/v1.7.0...v1.7.1) (2025-02-27)
 
 
