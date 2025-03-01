@@ -16,13 +16,8 @@ export const getOutputByTemplate = (
     const chosenTemplate = defaultTemplateKey;
     const template = templatesMap[chosenTemplate];
 
-    const cssLink = website.cssFileName
-        ? `<link rel="stylesheet" type="text/css" href="/${website.cssFileName}">`
-        : '';
-
-    const jsScript = website.jsFileName
-        ? `<script src="/${website.jsFileName}"></script>`
-        : '';
+    const withCssImports = getWithCssImports(template, website.cssImports);
+    const withJsImports = getWithJsImports(withCssImports, website.jsImports);
 
     const faviconFileName = website.faviconFileName || 'favicon.ico';
     const faviconLink = `<link rel="icon" type="image/png" href="/${faviconFileName}" />`;
@@ -36,19 +31,49 @@ export const getOutputByTemplate = (
     const url = `${website.url}${page.slug}`;
     const siteName = website.name;
 
-    return template
-        .replace('<!--content-->', content)
-        .replace('<!--css-->', cssLink)
-        .replace('<!--js-->', jsScript)
-        .replace('<!--favicon-->', faviconLink)
-        .replace(new RegExp('<!--title-->', 'g'), title)
-        .replace(new RegExp('<!--description-->', 'g'), description)
-        .replace(new RegExp('<!--keywords-->', 'g'), keywords)
-        .replace(new RegExp('<!--author-->', 'g'), author)
-        .replace(new RegExp('<!--imageUrl-->', 'g'), imageUrl)
-        .replace(new RegExp('<!--url-->', 'g'), url)
-        .replace(new RegExp('<!--siteName-->', 'g'), siteName)
-        .replace(new RegExp('<!--language-->', 'g'), language);
+    return withJsImports
+        .replace(getReplaceKey('content'), content)
+        .replace(getReplaceKey('favicon'), faviconLink)
+        .replace(new RegExp(getReplaceKey('title'), 'g'), title)
+        .replace(new RegExp(getReplaceKey('description'), 'g'), description)
+        .replace(new RegExp(getReplaceKey('keywords'), 'g'), keywords)
+        .replace(new RegExp(getReplaceKey('author'), 'g'), author)
+        .replace(new RegExp(getReplaceKey('imageUrl'), 'g'), imageUrl)
+        .replace(new RegExp(getReplaceKey('url'), 'g'), url)
+        .replace(new RegExp(getReplaceKey('siteName'), 'g'), siteName)
+        .replace(new RegExp(getReplaceKey('language'), 'g'), language);
+}
+
+function getReplaceKey(key: string) {
+    return `{{${key}}}`;
+}
+
+function getWithCssImports(content: string, imports?: Record<string, string>) {
+    if (!imports) {
+        return content;
+    }
+
+    let result = content;
+
+    for (const [key, value] of Object.entries(imports)) {
+        result = result.replace(new RegExp(getReplaceKey(key), 'g'), `<link rel="stylesheet" type="text/css" href="/${value}">`);
+    }
+
+    return result;
+}
+
+function getWithJsImports(content: string, imports?: Record<string, string>) {
+    if (!imports) {
+        return content;
+    }
+
+    let result = content;
+
+    for (const [key, value] of Object.entries(imports)) {
+        result = result.replace(new RegExp(getReplaceKey(key), 'g'), `<script src="/${value}"></script>`);
+    }
+
+    return result;
 }
 
 function getMetadataValue(key: keyof Metadata, metadata: Metadata, defaultMetadata: Metadata) {

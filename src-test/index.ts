@@ -7,8 +7,12 @@ const website: Website = {
     name: 'viralexplained.com',
     sitePath: path.resolve(__dirname, '../site-test'),
     outputDirectoryPath: path.resolve(__dirname, '../dist-website'),
-    cssFileName: 'public/main.css',
-    jsFileName: 'public/main.js',
+    cssImports: {
+        css: 'public/main.css',
+    },
+    jsImports: {
+        js: 'public/main.js',
+    },
     faviconFileName: 'public/favicon.png',
     defaultMetadata: {
         title: 'viralexplained.com',

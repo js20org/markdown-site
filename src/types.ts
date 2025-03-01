@@ -11,8 +11,8 @@ export interface Website {
     publicPath?: string;
     outputDirectoryPath: string;
     htmlTemplates: HtmlTemplate[];
-    cssFileName?: string;
-    jsFileName?: string;
+    cssImports?: Record<string, string>;
+    jsImports?: Record<string, string>;
     faviconFileName?: string;
     legacyPaths?: string[];
     commands?: Command<any>[];
