@@ -31,7 +31,7 @@ export const getOutputByTemplate = (
     const url = `${website.url}${page.slug}`;
     const siteName = website.name;
 
-    return withJsImports
+    const result = withJsImports
         .replace(getReplaceKey('content'), content)
         .replace(getReplaceKey('favicon'), faviconLink)
         .replace(new RegExp(getReplaceKey('title'), 'g'), title)
@@ -42,6 +42,12 @@ export const getOutputByTemplate = (
         .replace(new RegExp(getReplaceKey('url'), 'g'), url)
         .replace(new RegExp(getReplaceKey('siteName'), 'g'), siteName)
         .replace(new RegExp(getReplaceKey('language'), 'g'), language);
+
+    return getWithoutUnusedPlaceholders(result);
+}
+
+function getWithoutUnusedPlaceholders(content: string) {
+    return content.replace(/\{\{.*?\}\}/g, '');
 }
 
 function getReplaceKey(key: string) {
