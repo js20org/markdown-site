@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/js20org/markdown-site/compare/v1.8.0...v1.9.0) (2025-03-01)
+
+
+### Features
+
+* remove empty placeholders ([9b34343](https://github.com/js20org/markdown-site/commit/9b34343a1ab6bd17107de927b08da958f730600b))
+
 # [1.8.0](https://github.com/js20org/markdown-site/compare/v1.7.1...v1.8.0) (2025-03-01)
 
 
