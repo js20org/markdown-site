@@ -26,11 +26,13 @@ function verifyValidPaths() {
     });
 }
 
+const buildCommand = process.env.BUILD_COMMAND || 'build';
+
 function build() {
     console.log('Building...');
 
     try {
-        execSync('npm run build', { stdio: ['ignore', 'pipe', 'pipe'] });
+        execSync(`npm run ${buildCommand}`, { stdio: ['ignore', 'pipe', 'pipe'] });
     } catch (error) {
         console.error('Build failed');
         console.error(error.stderr.toString());
