@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/js20org/markdown-site/compare/v1.9.0...v1.10.0) (2025-09-23)
+
+
+### Features
+
+* shorter command name and app directory variable ([da8b7a4](https://github.com/js20org/markdown-site/commit/da8b7a4dc16100931e602745ae500d67342a6a9a))
+
 # [1.9.0](https://github.com/js20org/markdown-site/compare/v1.8.0...v1.9.0) (2025-03-01)
 
 
