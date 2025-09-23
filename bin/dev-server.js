@@ -9,10 +9,12 @@ const open = require('better-opn');
 const outputPath = path.resolve('./dist-website');
 const publicPath = path.resolve(outputPath, 'public');
 
+const appDirectory = process.env.APP_DIRECTORY || process.cwd();
+
 const fullPaths = [
-    path.resolve('./src/index.ts'),
-    path.resolve('./site'),
-    path.resolve('./site-assets'),
+    path.resolve(appDirectory, './src/index.ts'),
+    path.resolve(appDirectory, './site'),
+    path.resolve(appDirectory, './site-assets'),
 ];
 
 function verifyValidPaths() {

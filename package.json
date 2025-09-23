@@ -7,7 +7,7 @@
         "dist"
     ],
     "bin": {
-        "js20-markdown-site-dev-server": "./bin/dev-server.js"
+        "js20-site-dev": "./bin/dev-server.js"
     },
     "sideEffects": false,
     "main": "./dist/index.js",
