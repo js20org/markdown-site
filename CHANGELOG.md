@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/js20org/markdown-site/compare/v1.10.0...v1.11.0) (2025-09-23)
+
+
+### Features
+
+* build command via env ([c79205f](https://github.com/js20org/markdown-site/commit/c79205feeb9307ab5d144652fadc4428d23942fc))
+
 # [1.10.0](https://github.com/js20org/markdown-site/compare/v1.9.0...v1.10.0) (2025-09-23)
 
 
