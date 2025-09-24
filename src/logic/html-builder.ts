@@ -11,15 +11,15 @@ export function getRenderedNodeList(nodes: MarkdownNode[]): string {
 function getRenderedNode(node: MarkdownNode): string {
     switch (node.type) {
         case MarkdownNodeType.h1:
-            return `<h1>${getRenderedNodeList(node.children)}</h1>`;
+            return getHeader(node.children, 'h1');
         case MarkdownNodeType.h2:
-            return `<h2>${getRenderedNodeList(node.children)}</h2>`;
+            return getHeader(node.children, 'h2');
         case MarkdownNodeType.h3:
-            return `<h3>${getRenderedNodeList(node.children)}</h3>`;
+            return getHeader(node.children, 'h3');
         case MarkdownNodeType.h4:
-            return `<h4>${getRenderedNodeList(node.children)}</h4>`;
+            return getHeader(node.children, 'h4');
         case MarkdownNodeType.h5:
-            return `<h5>${getRenderedNodeList(node.children)}</h5>`;
+            return getHeader(node.children, 'h5');
         case MarkdownNodeType.space:
             return '<br>';
         case MarkdownNodeType.paragraph:
@@ -64,6 +64,13 @@ function getRenderedNode(node: MarkdownNode): string {
         default:
             throw new Error(`Unknown node type: ${node.type}`);
     }
+}
+
+function getHeader(children: MarkdownNode[], tag: string): string {
+    const content = getRenderedNodeList(children);
+    const id = content.toLowerCase().replace(/[^\w]+/g, '-').replace(/^-+|-+$/g, '');
+
+    return `<${tag} id="${id}">${content}</${tag}>`;
 }
 
 function getCode({ lines, language }: MarkdownCodeNode): string {
