@@ -1,5 +1,5 @@
 import { getParsedSchemaValue, getValidatedSchema, validateBySchema } from '@js20/schema';
-import { BuiltPage, Command, CommandProps, MarkdownCodeDividerNode, MarkdownCodeNode, MarkdownNode, MarkdownNodeType, MarkdownTableNode, MarkdownTagNode, MarkdownTextNode, MarkdownTree, Page, PluginProps, PluginRuleDocument, PluginRuleNode, Position, Website } from '../types';
+import { BuiltPage, Command, CommandProps, DefinedArgsCommand, MarkdownCodeDividerNode, MarkdownCodeNode, MarkdownNode, MarkdownNodeType, MarkdownTableNode, MarkdownTagNode, MarkdownTextNode, MarkdownTree, Page, PluginProps, PluginRuleDocument, PluginRuleNode, Position, Website } from '../types';
 import { getTextNode } from './markdown-parser';
 
 export const getCompiledMarkdown = (website: Website, pages: BuiltPage[], page: BuiltPage): MarkdownTree => {
@@ -103,6 +103,27 @@ const getParsedData = (
     return result;
 }
 
+const getValidatedArgs = (argsKeys: string[], args: any[], argsSchema: any) => {
+    const argsMap: Record<string, string | null> = {};
+
+    for (let i = 0; i < argsKeys.length; i++) {
+        const key = argsKeys[i] as string;
+        const value = args[i] ?? null;
+
+        argsMap[key] = value;
+    }
+
+    const hasArgs = args.length > 0;
+    const validatedSchema = hasArgs ? getValidatedSchema(argsSchema) : null;
+    const parsedArgs = hasArgs ? getParsedData(argsSchema, argsMap) : null;
+
+    if (validatedSchema) {
+        validateBySchema(validatedSchema, parsedArgs);
+    }
+
+    return parsedArgs;
+}
+
 const getTransformedCommandNode = (
     commandProps: CommandProps,
     node: MarkdownNode
@@ -123,25 +144,11 @@ const getTransformedCommandNode = (
         throw new Error(`Command with id "${commandId}" not found, did you provide it in your website configuration?`);
     }
 
-    const { argsKeys, argsSchema, run } = command as Command<any>;
-    const argsMap: Record<string, string | null> = {};
+    const definedCommand = command as DefinedArgsCommand<any>;
+    const hasArgsDefinition = !!definedCommand.argsKeys && !!definedCommand.argsSchema;
+    const parsedArgs = hasArgsDefinition ? getValidatedArgs(definedCommand.argsKeys as string[], args, definedCommand.argsSchema) : args;
 
-    for (let i = 0; i < argsKeys.length; i++) {
-        const key = argsKeys[i] as string;
-        const value = args[i] ?? null;
-
-        argsMap[key] = value;
-    }
-
-    const hasArgs = args.length > 0;
-    const validatedSchema = hasArgs ? getValidatedSchema(argsSchema) : null;
-    const parsedArgs = hasArgs ? getParsedData(argsSchema, argsMap) : null;
-
-    if (validatedSchema) {
-        validateBySchema(validatedSchema, parsedArgs);
-    }
-
-    const output = run(commandProps, parsedArgs);
+    const output = command.run(commandProps, parsedArgs);
     const safeOutput = output || '';
 
     return getTextNode(safeOutput);

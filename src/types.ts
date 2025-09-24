@@ -136,8 +136,14 @@ export interface CommandProps {
 }
 
 export type Primitive = string | number | boolean;
+export type Command<T extends { [K in keyof T]: Primitive }> = RawArgsCommand<T> | DefinedArgsCommand<T>;
 
-export interface Command<T extends { [K in keyof T]: Primitive }> {
+export interface RawArgsCommand<T extends { [K in keyof T]: Primitive }> {
+    id: string;
+    run: (props: CommandProps, args: any[]) => string | undefined;
+}
+
+export interface DefinedArgsCommand<T extends { [K in keyof T]: Primitive }> {
     id: string;
     argsKeys: (keyof T)[];
     argsSchema: T;
