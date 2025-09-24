@@ -1,3 +1,10 @@
+## [1.13.2](https://github.com/js20org/markdown-site/compare/v1.13.1...v1.13.2) (2025-09-24)
+
+
+### Bug Fixes
+
+* bug in self site from prefix ([14d261f](https://github.com/js20org/markdown-site/commit/14d261f5370bed5dc4cb71f3bd9f4102148668b5))
+
 ## [1.13.1](https://github.com/js20org/markdown-site/compare/v1.13.0...v1.13.1) (2025-09-24)
 
 
