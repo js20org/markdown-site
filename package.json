@@ -24,7 +24,7 @@
         "@js20/schema": "^1.0.3",
         "better-opn": "^3.0.2",
         "chokidar": "^4.0.3",
-        "express": "^4.21.2"
+        "express": "^5.1.0"
     },
     "devDependencies": {
         "@js20/schema": "^1.0.3",
@@ -36,7 +36,7 @@
         "better-opn": "^3.0.2",
         "chokidar": "^4.0.3",
         "esbuild": "^0.24.2",
-        "express": "^4.21.2",
+        "express": "^5.1.0",
         "rimraf": "^6.0.1",
         "semantic-release": "^24.2.0",
         "typescript": "^5.7.2"
