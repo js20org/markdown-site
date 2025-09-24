@@ -297,9 +297,16 @@ function getTarget(url: string, href: string | undefined) {
     }
 
     try {
+        const selfSitePrefix = [
+            '/',
+            './',
+            '../',
+            '#',
+        ];
+
         const converted = new URL(href);
         const baseUrl = `${converted.protocol}//${converted.hostname}`;
-        const isSameSite = baseUrl === url;
+        const isSameSite = baseUrl === url || selfSitePrefix.some(prefix => href.startsWith(prefix));
         
         return isSameSite ? '_self' : '_blank';
     } catch {
