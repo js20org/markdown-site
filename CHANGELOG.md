@@ -1,3 +1,10 @@
+## [1.14.1](https://github.com/js20org/markdown-site/compare/v1.14.0...v1.14.1) (2025-09-24)
+
+
+### Bug Fixes
+
+* catch all route ([a02babb](https://github.com/js20org/markdown-site/commit/a02babbb85cff8efc5c9aaefdd87e2195342a6a8))
+
 # [1.14.0](https://github.com/js20org/markdown-site/compare/v1.13.2...v1.14.0) (2025-09-24)
 
 
