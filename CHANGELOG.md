@@ -1,3 +1,10 @@
+## [1.13.1](https://github.com/js20org/markdown-site/compare/v1.13.0...v1.13.1) (2025-09-24)
+
+
+### Bug Fixes
+
+* improve href target code ([43ee821](https://github.com/js20org/markdown-site/commit/43ee82139bd115c794489e75c18566a88d1d8907))
+
 # [1.13.0](https://github.com/js20org/markdown-site/compare/v1.12.1...v1.13.0) (2025-09-24)
 
 
