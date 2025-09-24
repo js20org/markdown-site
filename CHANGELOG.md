@@ -1,3 +1,10 @@
+## [1.12.1](https://github.com/js20org/markdown-site/compare/v1.12.0...v1.12.1) (2025-09-24)
+
+
+### Bug Fixes
+
+* types for command ([edcc9da](https://github.com/js20org/markdown-site/commit/edcc9dafb9691cf37e2d600797f66c39f1ea3ef6))
+
 # [1.12.0](https://github.com/js20org/markdown-site/compare/v1.11.0...v1.12.0) (2025-09-24)
 
 
