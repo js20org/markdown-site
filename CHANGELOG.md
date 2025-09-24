@@ -1,3 +1,10 @@
+## [1.14.2](https://github.com/js20org/markdown-site/compare/v1.14.1...v1.14.2) (2025-09-24)
+
+
+### Bug Fixes
+
+* another catch all attempt ([f3db611](https://github.com/js20org/markdown-site/commit/f3db6114132ee1b9f521f1bc1b29f829b6cefa02))
+
 ## [1.14.1](https://github.com/js20org/markdown-site/compare/v1.14.0...v1.14.1) (2025-09-24)
 
 
