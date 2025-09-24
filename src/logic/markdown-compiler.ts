@@ -131,7 +131,9 @@ const getTransformedCommandNode = (
     const tagNode = node as MarkdownTagNode;
     const firstChild = tagNode.children?.[0] as MarkdownTextNode | undefined;
     const commandRawText = firstChild?.content || '';
-    const [commandId, ...args] = commandRawText.split(' ');
+
+    const parts = commandRawText.match(/"([^"]+)"|[^\s"]+/g) || [];
+    const [commandId, ...args] = parts.map(s => s.replace(/^"|"$/g, ''));
 
     if (!commandId) {
         throw new Error('Command node did not have a command identifier');
