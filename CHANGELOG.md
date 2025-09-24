@@ -1,3 +1,11 @@
+# [1.12.0](https://github.com/js20org/markdown-site/compare/v1.11.0...v1.12.0) (2025-09-24)
+
+
+### Features
+
+* preserve quotes ([67ad5d0](https://github.com/js20org/markdown-site/commit/67ad5d027d111d79b22cc931020d9d7a26f20b41))
+* raw args comma d ([e41fdda](https://github.com/js20org/markdown-site/commit/e41fddafd7da54a0cb960d9b41eac9c6ce91234b))
+
 # [1.11.0](https://github.com/js20org/markdown-site/compare/v1.10.0...v1.11.0) (2025-09-23)
 
 
