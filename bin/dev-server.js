@@ -47,7 +47,7 @@ function run() {
     const app = express();
 
     app.use(express.static(publicPath));
-    app.get('(.*)', (req, res) => {
+    app.get('/(.*)/', (req, res) => {
         const filePath = path.join(outputPath, req.path);
         const shouldReturnAsIs = fs.existsSync(filePath) && !fs.lstatSync(filePath).isDirectory();
 
