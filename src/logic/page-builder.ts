@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { BuiltPage, CommandProps, Page, PluginProps, Website } from '../types';
+import { BuiltPage, Page, Website } from '../types';
 import { getOutputByTemplate, getTemplates } from './html-templates';
 import { getCompiledMarkdown } from './markdown-compiler';
 import { getHtmlFromMarkdownTree } from './html-builder';
@@ -8,6 +8,7 @@ import { getParsedMarkdown } from './markdown-parser';
 import { getMetadata } from './metadata';
 import { getInnerText } from './text-builder';
 import { getExpectedReadTime } from './expected-read-time';
+import { getPageTemplate } from './template';
 
 export const renderHtmlFiles = (
     website: Website,
@@ -56,6 +57,8 @@ export const getBuiltPages = (website: Website, pages: Page[]): BuiltPage[] => {
         const rawContent = getPageContent(page.filePath);
         const tree = getParsedMarkdown(website, rawContent);
         const metadata = getMetadata(page.relativePath, tree);
+        const template = getPageTemplate(tree);
+        console.log(template);
         const innerText = getInnerText(tree.nodes);
         const expectedReadTime = getExpectedReadTime(innerText);
 
@@ -63,6 +66,7 @@ export const getBuiltPages = (website: Website, pages: Page[]): BuiltPage[] => {
             ...page,
             tree,
             metadata,
+            template,
             expectedReadTime,
         };
     });

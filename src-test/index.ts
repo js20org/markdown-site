@@ -28,6 +28,10 @@ const website: Website = {
             path: path.resolve(__dirname, '../site-test-assets/main.html'),
             isDefault: true,
         },
+        {
+            key: 'test',
+            path: path.resolve(__dirname, '../site-test-assets/test.html'),
+        },
     ],
 };
 

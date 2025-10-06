@@ -1,4 +1,5 @@
 # Something
+$$ template:main
 $$ meta:description a description
 
 ![image text here](/public/foobar/image.png)

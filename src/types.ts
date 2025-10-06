@@ -32,6 +32,7 @@ export interface Page {
 
 export enum MarkdownNodeType {
     metadata = 'metadata',
+    template = 'template',
     command = 'command',
     h1 ='h1',
     h2 = 'h2',
@@ -97,18 +98,12 @@ export interface MarkdownTextNode {
     content: string;
 }
 
-export interface MarkdownMetadataNode {
-    type: MarkdownNodeType.metadata;
-    key: keyof Metadata;
-    value: string;
-}
-
 export interface MarkdownCodeDividerNode {
     type: MarkdownNodeType.codeDivider;
     extraContent: string;
 }
 
-export type MarkdownNode = MarkdownTagNode | MarkdownTextNode | MarkdownMetadataNode | MarkdownAnchorNode | MarkdownImageNode | MarkdownTableNode | MarkdownCodeDividerNode | MarkdownCodeNode;
+export type MarkdownNode = MarkdownTagNode | MarkdownTextNode | MarkdownAnchorNode | MarkdownImageNode | MarkdownTableNode | MarkdownCodeDividerNode | MarkdownCodeNode;
 
 export interface MarkdownTree {
     nodes: MarkdownNode[];
@@ -127,6 +122,7 @@ export interface Metadata {
 export interface BuiltPage extends Page {
     tree: MarkdownTree;
     metadata: Metadata;
+    template?: string;
     expectedReadTime: string;
 }
 

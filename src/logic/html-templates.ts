@@ -13,8 +13,12 @@ export const getOutputByTemplate = (
     const { defaultMetadata } = website;
     const { metadata } = page;
 
-    const chosenTemplate = defaultTemplateKey;
+    const chosenTemplate = page.template || defaultTemplateKey;
     const template = templatesMap[chosenTemplate];
+
+    if (!template) {
+        throw new Error(`Template with key "${chosenTemplate}" not found`);
+    }
 
     const withCssImports = getWithCssImports(template, website.cssImports);
     const withJsImports = getWithJsImports(withCssImports, website.jsImports);

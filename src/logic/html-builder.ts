@@ -34,6 +34,8 @@ function getRenderedNode(node: MarkdownNode): string {
             return (node as MarkdownTextNode).content;
         case MarkdownNodeType.metadata:
             return '';
+        case MarkdownNodeType.template:
+            return '';
         case MarkdownNodeType.image:
             return getImage(node as MarkdownImageNode);
         case MarkdownNodeType.anchor:

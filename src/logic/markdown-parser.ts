@@ -69,6 +69,11 @@ function getLineType(line: string): {
             type: MarkdownNodeType.metadata,
             content: line.substring(8),
         };
+    } else if (line.startsWith('$$ template:')) {
+        return {
+            type: MarkdownNodeType.template,
+            content: line.substring(12).trim(),
+        };
     } else if (line.startsWith('$$ ')) {
         return {
             type: MarkdownNodeType.command,
