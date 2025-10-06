@@ -1,3 +1,10 @@
+# [1.16.0](https://github.com/js20org/markdown-site/compare/v1.15.0...v1.16.0) (2025-10-06)
+
+
+### Features
+
+* made page templates work ([ec6f3aa](https://github.com/js20org/markdown-site/commit/ec6f3aa7bbd09850efda1b65ed9354d3635000b2))
+
 # [1.15.0](https://github.com/js20org/markdown-site/compare/v1.14.3...v1.15.0) (2025-09-24)
 
 
