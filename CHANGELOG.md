@@ -1,3 +1,10 @@
+# [1.17.0](https://github.com/js20org/markdown-site/compare/v1.16.0...v1.17.0) (2025-10-07)
+
+
+### Features
+
+* allow index.ts instead of src/index.ts only ([4e77222](https://github.com/js20org/markdown-site/commit/4e772223006ee6d4602f1a4bd674ec3c30f7a050))
+
 # [1.16.0](https://github.com/js20org/markdown-site/compare/v1.15.0...v1.16.0) (2025-10-06)
 
 
