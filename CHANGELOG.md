@@ -1,3 +1,10 @@
+## [1.17.1](https://github.com/js20org/markdown-site/compare/v1.17.0...v1.17.1) (2025-10-07)
+
+
+### Bug Fixes
+
+* invalid spread ([57d1e5b](https://github.com/js20org/markdown-site/commit/57d1e5b5a5cf4a59e111aa710b9811af59e244b5))
+
 # [1.17.0](https://github.com/js20org/markdown-site/compare/v1.16.0...v1.17.0) (2025-10-07)
 
 
