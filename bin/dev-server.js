@@ -12,7 +12,7 @@ const publicPath = path.resolve(outputPath, 'public');
 const appDirectory = process.env.APP_DIRECTORY || process.cwd();
 
 const fullPaths = [
-    ...getFirstExistingPath([
+    getFirstExistingPath([
         path.resolve(appDirectory, './src/index.ts'),
         path.resolve(appDirectory, './index.ts'),
     ]),
