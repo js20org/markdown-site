@@ -58,7 +58,6 @@ export const getBuiltPages = (website: Website, pages: Page[]): BuiltPage[] => {
         const tree = getParsedMarkdown(website, rawContent);
         const metadata = getMetadata(page.relativePath, tree);
         const template = getPageTemplate(tree);
-        console.log(template);
         const innerText = getInnerText(tree.nodes);
         const expectedReadTime = getExpectedReadTime(innerText);
 

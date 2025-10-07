@@ -12,10 +12,23 @@ const publicPath = path.resolve(outputPath, 'public');
 const appDirectory = process.env.APP_DIRECTORY || process.cwd();
 
 const fullPaths = [
-    path.resolve(appDirectory, './src/index.ts'),
+    ...getFirstExistingPath([
+        path.resolve(appDirectory, './src/index.ts'),
+        path.resolve(appDirectory, './index.ts'),
+    ]),
     path.resolve(appDirectory, './site'),
     path.resolve(appDirectory, './site-assets'),
 ];
+
+function getFirstExistingPath(paths) {
+    for (const item of paths) {
+        if (fs.existsSync(item)) {
+            return item;
+        }
+    }
+
+    throw new Error(`None of the paths exist: ${paths.join(', ')}`);
+}
 
 function verifyValidPaths() {
     fullPaths.forEach(path => {
