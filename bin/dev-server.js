@@ -17,7 +17,10 @@ const fullPaths = [
         path.resolve(appDirectory, './index.ts'),
     ]),
     path.resolve(appDirectory, './site'),
-    path.resolve(appDirectory, './site-assets'),
+    getFirstExistingPath([
+        path.resolve(appDirectory, './site-assets'),
+        path.resolve(appDirectory, './assets'),
+    ]),
 ];
 
 function getFirstExistingPath(paths) {
