@@ -1,3 +1,10 @@
+# [1.19.0](https://github.com/js20org/markdown-site/compare/v1.18.0...v1.19.0) (2025-10-07)
+
+
+### Features
+
+* output path, public path, watch path overrides ([04574f1](https://github.com/js20org/markdown-site/commit/04574f12ab26fa7a72f7a0848999d429143a9bb0))
+
 # [1.18.0](https://github.com/js20org/markdown-site/compare/v1.17.1...v1.18.0) (2025-10-07)
 
 
