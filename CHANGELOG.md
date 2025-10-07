@@ -1,3 +1,10 @@
+## [1.19.1](https://github.com/js20org/markdown-site/compare/v1.19.0...v1.19.1) (2025-10-07)
+
+
+### Bug Fixes
+
+* path resolve in dev script ([e1c3dd8](https://github.com/js20org/markdown-site/commit/e1c3dd81b6666d78bf9a08e451f0aa01065947a9))
+
 # [1.19.0](https://github.com/js20org/markdown-site/compare/v1.18.0...v1.19.0) (2025-10-07)
 
 
