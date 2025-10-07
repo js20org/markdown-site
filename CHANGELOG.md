@@ -1,3 +1,10 @@
+# [1.18.0](https://github.com/js20org/markdown-site/compare/v1.17.1...v1.18.0) (2025-10-07)
+
+
+### Features
+
+* allow site-assets or assets ([ebc6e4e](https://github.com/js20org/markdown-site/commit/ebc6e4e54bdb763cbe9751fb3765df83eded7596))
+
 ## [1.17.1](https://github.com/js20org/markdown-site/compare/v1.17.0...v1.17.1) (2025-10-07)
 
 
