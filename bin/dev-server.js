@@ -6,11 +6,26 @@ const { execSync } = require('child_process');
 const express = require('express');
 const open = require('better-opn');
 
-const outputPath = process.env.OUTPUT_PATH || path.resolve('./dist-website');
-const publicPath = process.env.PUBLIC_PATH || path.resolve(outputPath, 'public');
-const appDirectory = process.env.APP_DIRECTORY || process.cwd();
+function getResolvedOrNull(next) {
+    if (next) {
+        return path.resolve(next);
+    }
+    return null;
+}
 
-const watchPath = process.env.WATCH_PATH;
+const settings = {
+    outputPath: getResolvedOrNull(process.env.OUTPUT_PATH),
+    publicPath: getResolvedOrNull(process.env.PUBLIC_PATH),
+    appDirectory: getResolvedOrNull(process.env.APP_DIRECTORY),
+    watchPath: getResolvedOrNull(process.env.WATCH_PATH),
+    buildCommand: process.env.BUILD_COMMAND,
+}
+
+const outputPath = settings.outputPath || path.resolve('./dist-website');
+const publicPath = settings.publicPath || path.resolve(outputPath, 'public');
+const appDirectory = settings.appDirectory || process.cwd();
+
+const watchPath = settings.watchPath;
 const fullPaths = watchPath ? [watchPath] : [
     getFirstExistingPath([
         path.resolve(appDirectory, './src/index.ts'),
@@ -42,7 +57,7 @@ function verifyValidPaths() {
     });
 }
 
-const buildCommand = process.env.BUILD_COMMAND || 'build';
+const buildCommand = settings.buildCommand || 'build';
 
 function build() {
     console.log('Building...');
