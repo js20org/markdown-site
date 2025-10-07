@@ -1,3 +1,10 @@
+# [1.20.0](https://github.com/js20org/markdown-site/compare/v1.19.1...v1.20.0) (2025-10-07)
+
+
+### Features
+
+* always refresh after build ([f45bf8d](https://github.com/js20org/markdown-site/commit/f45bf8d8f7f10cfd527b662b7c7d73ada8606786))
+
 ## [1.19.1](https://github.com/js20org/markdown-site/compare/v1.19.0...v1.19.1) (2025-10-07)
 
 
