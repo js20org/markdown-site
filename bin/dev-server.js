@@ -6,12 +6,12 @@ const { execSync } = require('child_process');
 const express = require('express');
 const open = require('better-opn');
 
-const outputPath = path.resolve('./dist-website');
-const publicPath = path.resolve(outputPath, 'public');
-
+const outputPath = process.env.OUTPUT_PATH || path.resolve('./dist-website');
+const publicPath = process.env.PUBLIC_PATH || path.resolve(outputPath, 'public');
 const appDirectory = process.env.APP_DIRECTORY || process.cwd();
 
-const fullPaths = [
+const watchPath = process.env.WATCH_PATH;
+const fullPaths = watchPath ? [watchPath] : [
     getFirstExistingPath([
         path.resolve(appDirectory, './src/index.ts'),
         path.resolve(appDirectory, './index.ts'),
