@@ -64,12 +64,10 @@ function build() {
 
     try {
         execSync(`npm run ${buildCommand}`, { stdio: ['ignore', 'pipe', 'pipe'] });
-        open('http://localhost:8080');
     } catch (error) {
         console.error('Build failed');
         console.error(error.stderr.toString());
     }
-    
 }
 
 function run() {
@@ -107,6 +105,7 @@ function run() {
 
     app.listen(8080, () => {
         console.log('Server is running at http://localhost:8080');
+        open('http://localhost:8080');
     });
 }
 
