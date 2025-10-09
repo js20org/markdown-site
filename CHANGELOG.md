@@ -1,3 +1,10 @@
+## [1.20.1](https://github.com/js20org/markdown-site/compare/v1.20.0...v1.20.1) (2025-10-09)
+
+
+### Bug Fixes
+
+* restore old open call ([09c1ee1](https://github.com/js20org/markdown-site/commit/09c1ee1a1c137264c647b02c6eb33d594dd2d9d2))
+
 # [1.20.0](https://github.com/js20org/markdown-site/compare/v1.19.1...v1.20.0) (2025-10-07)
 
 
