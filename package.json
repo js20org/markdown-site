@@ -10,8 +10,9 @@
         "js20-site-dev": "./bin/dev-server.js"
     },
     "sideEffects": false,
+    "type": "module",
+    "exports": "./dist/index.js",
     "main": "./dist/index.js",
-    "module": "./dist/index.js",
     "types": "./dist/index.d.ts",
     "scripts": {
         "deploy": "npm run build && npm publish",
