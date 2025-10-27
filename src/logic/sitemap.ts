@@ -1,12 +1,12 @@
 import fs from 'fs';
 import path from 'path';
 
-import { BuiltPage, Website } from '../types';
+import { type BuiltPage, type Website } from '../types.js';
 
 export function renderSitemap(website: Website, pages: BuiltPage[]) {
     console.log('Rendering sitemap...');
 
-    const { robotsContent, sitemapContent} = getSitemap(website, pages);
+    const { robotsContent, sitemapContent } = getSitemap(website, pages);
     
     saveFile(website, 'sitemap.txt', sitemapContent);
     saveFile(website, 'robots.txt', robotsContent);

@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { Website } from '../types';
+import { type Website } from '../types.js';
 
 export function copyPublicAssets(website: Website) {
     const { publicPath, outputDirectoryPath } = website;

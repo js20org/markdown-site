@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { BuiltPage, HtmlTemplate, Metadata, Website } from '../types';
+import type { BuiltPage, HtmlTemplate, Metadata, Website } from '../types.js';
 
 type TemplatesMap = Record<string, string>;
 

@@ -1,4 +1,4 @@
-import { MarkdownNode, MarkdownTagNode, MarkdownTextNode, MarkdownTree } from '../types';
+import { type MarkdownNode, type MarkdownTagNode, type MarkdownTextNode, type MarkdownTree } from '../types.js';
 
 export const getPageTemplate = (tree: MarkdownTree) => {
     const result: string[] = [];

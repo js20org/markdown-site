@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { Page, Website } from '../types';
+import { type Page, type Website } from '../types.js';
 
 export const getSitePages = (website: Website): Page[] => {
     const { sitePath } = website;

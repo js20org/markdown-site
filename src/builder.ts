@@ -1,8 +1,8 @@
-import { getBuiltPages, renderHtmlFiles } from './logic/page-builder';
-import { copyPublicAssets } from './logic/public-assets';
-import { getSitePages } from './logic/site';
-import { renderSitemap } from './logic/sitemap';
-import { Website } from './types';
+import { getBuiltPages, renderHtmlFiles } from './logic/page-builder.js';
+import { copyPublicAssets } from './logic/public-assets.js';
+import { getSitePages } from './logic/site.js';
+import { renderSitemap } from './logic/sitemap.js';
+import { type Website } from './types.js';
 
 export const buildWebsite = (website: Website) => {
     console.log('Building website...');

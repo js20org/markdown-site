@@ -1,4 +1,4 @@
-import { MarkdownNode, MarkdownNodeType, MarkdownTextNode, MarkdownTree, MarkdownAnchorNode, MarkdownTagNode, Website, MarkdownImageNode, MarkdownCodeDividerNode } from '../types';
+import { type MarkdownNode, MarkdownNodeType, type MarkdownTextNode, type MarkdownTree, type MarkdownAnchorNode, type MarkdownTagNode, type Website, type MarkdownImageNode, type MarkdownCodeDividerNode } from '../types.js';
 
 export function getParsedMarkdown(website: Website, text: string): MarkdownTree {
     const lines = text.split('\n');

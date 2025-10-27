@@ -1,3 +1,3 @@
-export * from './builder';
-export * from './helpers/template-renderer';
-export * from './types';
+export * from './builder.js';
+export * from './helpers/template-renderer.js';
+export * from './types.js';

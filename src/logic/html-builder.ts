@@ -1,4 +1,4 @@
-import { MarkdownAnchorNode, MarkdownCodeNode, MarkdownImageNode, MarkdownNode, MarkdownNodeType, MarkdownTableNode, MarkdownTextNode, MarkdownTree } from '../types';
+import { type MarkdownAnchorNode, type MarkdownCodeNode, type MarkdownImageNode, type MarkdownNode, MarkdownNodeType, type MarkdownTableNode, type MarkdownTextNode, type MarkdownTree } from '../types.js';
 
 export function getHtmlFromMarkdownTree(tree: MarkdownTree): string {
     return getRenderedNodeList(tree.nodes);

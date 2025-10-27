@@ -1,5 +1,5 @@
-import { MarkdownNode, MarkdownNodeType, MarkdownTagNode, MarkdownTree, Metadata } from '../types';
-import { getRenderedNodeList } from './html-builder';
+import { type MarkdownNode, MarkdownNodeType, type MarkdownTagNode, type MarkdownTree, type Metadata } from '../types.js';
+import { getRenderedNodeList } from './html-builder.js';
 
 const requiredMetadataKeys: (keyof Metadata)[] = [
     'title',

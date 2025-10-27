@@ -1,14 +1,14 @@
 import fs from 'fs';
 import path from 'path';
-import { BuiltPage, Page, Website } from '../types';
-import { getOutputByTemplate, getTemplates } from './html-templates';
-import { getCompiledMarkdown } from './markdown-compiler';
-import { getHtmlFromMarkdownTree } from './html-builder';
-import { getParsedMarkdown } from './markdown-parser';
-import { getMetadata } from './metadata';
-import { getInnerText } from './text-builder';
-import { getExpectedReadTime } from './expected-read-time';
-import { getPageTemplate } from './template';
+import { type BuiltPage, type Page, type Website } from '../types.js';
+import { getOutputByTemplate, getTemplates } from './html-templates.js';
+import { getCompiledMarkdown } from './markdown-compiler.js';
+import { getHtmlFromMarkdownTree } from './html-builder.js';
+import { getParsedMarkdown } from './markdown-parser.js';
+import { getMetadata } from './metadata.js';
+import { getInnerText } from './text-builder.js';
+import { getExpectedReadTime } from './expected-read-time.js';
+import { getPageTemplate } from './template.js';
 
 export const renderHtmlFiles = (
     website: Website,

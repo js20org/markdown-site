@@ -1,6 +1,6 @@
 import { getParsedSchemaValue, getValidatedSchema, validateBySchema } from '@js20/schema';
-import { BuiltPage, CommandProps, DefinedArgsCommand, MarkdownCodeDividerNode, MarkdownCodeNode, MarkdownNode, MarkdownNodeType, MarkdownTableNode, MarkdownTagNode, MarkdownTextNode, MarkdownTree, Page, PluginProps, PluginRuleDocument, PluginRuleNode, Position, Website } from '../types';
-import { getTextNode } from './markdown-parser';
+import { type BuiltPage, type CommandProps, type DefinedArgsCommand, type MarkdownCodeDividerNode, type MarkdownCodeNode, type MarkdownNode, MarkdownNodeType, type MarkdownTableNode, type MarkdownTagNode, type MarkdownTextNode, type MarkdownTree, type PluginProps, type PluginRuleDocument, type PluginRuleNode, Position, type Website } from '../types.js';
+import { getTextNode } from './markdown-parser.js';
 
 export const getCompiledMarkdown = (website: Website, pages: BuiltPage[], page: BuiltPage): MarkdownTree => {
     const { tree } = page;

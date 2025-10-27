@@ -1,15 +1,14 @@
 {
     "compilerOptions": {
         "target": "ES2020",
-        "module": "CommonJS",
-        "moduleResolution": "Node",
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "verbatimModuleSyntax": true,
         "strict": true,
+        "declaration": true,
+        "outDir": "./dist",
         "esModuleInterop": true,
         "skipLibCheck": true,
-        "isolatedModules": true,
-        "allowJs": true,
-        "baseUrl": "./",
-        "outDir": "./dist-dev",
         "types": ["node"]
     },
     "include": ["src", "src-test"],

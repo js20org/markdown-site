@@ -1,4 +1,4 @@
-import { MarkdownAnchorNode, MarkdownNode, MarkdownNodeType, MarkdownTagNode, MarkdownTextNode } from '../types';
+import { type MarkdownAnchorNode, type MarkdownNode, MarkdownNodeType, type MarkdownTagNode, type MarkdownTextNode } from '../types.js';
 
 export function getInnerText(nodes: MarkdownNode[]): string {
     return nodes.map(n => getRenderedNode(n)).join('');
