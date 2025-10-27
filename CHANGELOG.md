@@ -1,3 +1,10 @@
+## [1.20.3](https://github.com/js20org/markdown-site/compare/v1.20.2...v1.20.3) (2025-10-27)
+
+
+### Bug Fixes
+
+* script in esm ([f864986](https://github.com/js20org/markdown-site/commit/f864986fbffc56698c7cfae60314203304390b55))
+
 ## [1.20.2](https://github.com/js20org/markdown-site/compare/v1.20.1...v1.20.2) (2025-10-27)
 
 
