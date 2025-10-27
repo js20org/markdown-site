@@ -1,3 +1,10 @@
+## [1.20.4](https://github.com/js20org/markdown-site/compare/v1.20.3...v1.20.4) (2025-10-27)
+
+
+### Bug Fixes
+
+* imports for esm ([f2d8790](https://github.com/js20org/markdown-site/commit/f2d8790daa31f859d1e196e206d940f35fe5a053))
+
 ## [1.20.3](https://github.com/js20org/markdown-site/compare/v1.20.2...v1.20.3) (2025-10-27)
 
 

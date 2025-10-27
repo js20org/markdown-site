@@ -1,6 +1,6 @@
 {
     "name": "@js20/markdown-site",
-    "version": "1.20.3",
+    "version": "1.20.4",
     "license": "MIT",
     "files": [
         "bin",
