@@ -1,10 +1,14 @@
 #!/usr/bin/env node
-const fs = require('fs');
-const path = require('path');
-const chokidar = require('chokidar');
-const { execSync } = require('child_process');
-const express = require('express');
-const open = require('better-opn');
+import fs from 'fs';
+import path from 'path';
+import chokidar from 'chokidar';
+import { execSync } from 'child_process';
+import express from 'express';
+import open from 'better-opn';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 function getResolvedOrNull(next) {
     if (next) {
